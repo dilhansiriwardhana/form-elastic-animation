@@ -111,3 +111,79 @@ function colorize(color, line, placeholder) {
   gsap.to(line, { stroke: color, duration: 0.75 });
   gsap.to(placeholder, { color: color, duration: 0.75 });
 }
+
+//  Checkbox animation fill
+
+// const checkbox = document.querySelector(".checkbox");
+
+// const tl2 = gsap.timeline({
+//   defaults: { duration: 0, ease: "Power2.easeOut" },
+// });
+
+// const tickMarkPath = document.querySelector(".tick-mark path");
+// const pathLength = tickMarkPath.getTotalLength;
+
+// gsap.set(tickMarkPath, {
+//   strokeDashoffset: pathLength,
+//   strokeDasharray: pathLength,
+// });
+
+// checkbox.addEventListener("click", () => {
+//   if (checkbox.checked) {
+//     tl2.to(".checkbox-fill", { top: "0%" });
+//     tl2.fromTo(
+//       tickMarkPath,
+//       { strokeDashoffset: pathLength },
+//       { strokeDashoffset: 0 },
+//       "<50%"
+//     );
+//     tl2.to(".checkbox-label", { color: "#6391e8" }, "<");
+//   } else {
+//     tl2.to(".checkbox-fill", { top: "100%" });
+//     tl2.fromTo(
+//       tickMarkPath,
+//       { strokeDashoffset: 0 },
+//       { strokeDashoffset: pathLength },
+//       "<50%"
+//     );
+//     tl2.to(".checkbox-label", { color: "#c5c5c5" }, "<");
+//   }
+// });
+
+const checkbox = document.querySelector(".checkbox");
+
+const tl2 = gsap.timeline({
+  defaults: { duration: 0.5, ease: "Power2.easeOut" },
+});
+
+const tickMarkPath = document.querySelector(".tick-mark path");
+const pathLength = tickMarkPath.getTotalLength();
+
+gsap.set(tickMarkPath, {
+  strokeDashoffset: pathLength,
+  strokeDasharray: pathLength,
+});
+
+checkbox.addEventListener("click", () => {
+  if (checkbox.checked) {
+    tl2
+      .to(".checkbox-fill", { top: "0%" })
+      .fromTo(
+        tickMarkPath,
+        { strokeDashoffset: pathLength },
+        { strokeDashoffset: 0 },
+        "<"
+      )
+      .to(".checkbox-label", { color: "#6391e8" }, "<");
+  } else {
+    tl2
+      .to(".checkbox-fill", { top: "100%" })
+      .fromTo(
+        tickMarkPath,
+        { strokeDashoffset: 0 },
+        { strokeDashoffset: pathLength },
+        "<"
+      )
+      .to(".checkbox-label", { color: "#c5c5c5" }, "<");
+  }
+});

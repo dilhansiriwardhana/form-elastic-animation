@@ -145,3 +145,12 @@ button {
   transform: translate(-50%, -50%);
   opacity: 0;
 }
+
+@media screen and (max-width: 812px) {
+  form {
+    width: 90vw;
+    min-height: 80vh;
+    flex-direction: column;
+    padding: 8rem 3rem;
+  }
+}

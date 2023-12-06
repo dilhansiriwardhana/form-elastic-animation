@@ -41,3 +41,25 @@ containers.forEach((container) => {
     }
   });
 });
+
+// Revert back if its not focused
+
+form.addEventListener("click", () => {
+  containers.forEach((container) => {
+    const line = container.querySelector(".elastic-line");
+    const input = container.querySelector(".input");
+    const placeholder = container.querySelector(".placeholder");
+
+    if (document.activeElement !== input) {
+      if (!input.value) {
+        gsap.to(placeholder, {
+          top: 0,
+          left: 0,
+          scale: 1,
+          duration: 0.5,
+          ease: "Power2.easeOut",
+        });
+      }
+    }
+  });
+});
